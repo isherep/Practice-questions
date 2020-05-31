@@ -34,34 +34,6 @@ public class PermutationsArray {
         return result;
     }
 
-    /*
-    https://www.youtube.com/watch?v=IPWmrjE1_MU
-
-    res = {[1,2,3], [1,3,2]
-
-      [1,2,3] - first iteration swaps wiht itself
-      [1,3,2] - second iteration , i=2, start =1,
-                than i=2, start=2 - swap with itself, not doing anything.
-
-
-      starting array [1,3,2] start = 2, i=2, not do anything, swap with itself, than call
-      permutation again and at this point i==length, so it will just add the array to res
-     At that point i=3, start =1, break out that lop and come back.
-     Than that swap will put it back to 123
-
-     Now i =1,
-    Start =1, a=[2,1,3], that start =1, thatn start =2
-    start reaches length so ad to result
-
-     increment i
-    than increment i - [2,3,1]
-
-
-
-AT THE END OF EACH ITERATION WE ARE COMMING BACK TO THE STARTING ARRAY
-
-
-     */
 
     private static void permuteSwap(List<List<Integer>> result, int[] array, int start) {
         if (start >= array.length) {
@@ -72,7 +44,18 @@ AT THE END OF EACH ITERATION WE ARE COMMING BACK TO THE STARTING ARRAY
             result.add(current);
         } else {
             // starting at start so we only will be looking at the end of the array
-            for (int i = start; i < array.length; i++) {
+            for (int i = start; i < array.length; i++) { // start =0, i = 0..2, swap with itself
+                // i ended at 2
+                                                        // permute(array, 0+1)new start = 1
+                                                        // for(int i = 1; i< length; i++)
+                                                        // swap(1, 2) start is still 1,
+                                                        // permute (arr, 1+1)
+                                                        // for(int i = 2; i< length; i++)
+                                                        // swap(2, 2)
+                                                        // now i is 3=length, so add to the list
+
+                // last recursive call ended at i = 2, start is still 1 that was passed
+                // than swapped
                 System.out.println("Start: " + start + ", i: " + i);
                 swap(array, start, i);
                 permuteSwap(result, array, start + 1);
@@ -93,7 +76,14 @@ AT THE END OF EACH ITERATION WE ARE COMMING BACK TO THE STARTING ARRAY
         int[] a = {1, 2, 3};
 
         //permute(a);
-        permuteSwap(a);
+        List<List<Integer>> res =  permuteSwap(a);
+        for(int i = 0; i< res.size(); i++){
+            for(int j = 0; j< res.get(i).size(); j++){
+                System.out.print(res.get(i).get(j) + ", ");
+            }
+
+            System.out.println();
+        }
 
     }
 
