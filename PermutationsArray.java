@@ -40,6 +40,8 @@ public class PermutationsArray {
             List<Integer> current = new ArrayList<Integer>();
             for (int a : array) {
                 current.add(a);
+                System.out.println(current);
+
             }
             result.add(current);
         } else {

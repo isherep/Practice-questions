@@ -50,6 +50,7 @@ public class KLargestItem {
         int[] A = {3, 2, 8, 5, 6, 4};
 
         System.out.println(quickSelect(A, 0, A.length - 1, 2));
+        System.out.println("Remainer " + 1%10);
 
 
     }
