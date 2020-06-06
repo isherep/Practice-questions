@@ -43,4 +43,45 @@ public class MergeSortedLinkedLists {
 
         }
 
-}
+    Node MergeListsInPlace(Node list1, Node list2) {
+        if (list1 == null) return list2;
+        if (list2 == null) return list1;
+
+        Node head;
+        if (list1.val < list2.val) {
+            head = list1;
+        } else {
+            head = list2;
+            list2 = list1;
+            list1 = head;
+        }
+        while(list1.next != null) {
+            if (list1.next.val > list2.val) {
+                Node tmp = list1.next;
+                list1.next = list2;
+                list2 = tmp;
+            }
+            list1 = list1.next;
+        }
+        list1.next = list2;
+        return head;
+    }
+
+    static Node mergeRecursive(Node h1, Node h2) {
+        if (h1 == null)
+            return h2;
+        if (h2 == null)
+            return h1;
+
+        // start with the linked list
+        // whose head data is the least
+        if (h1.val < h2.val) {
+            h1.next = mergeRecursive(h1.next, h2);
+            return h1;
+        } else {
+            h2.next = mergeRecursive(h1, h2.next);
+            return h2;
+        }
+    }
+
+    }
