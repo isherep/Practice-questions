@@ -30,7 +30,7 @@ public class TopKFrequentWords {
         return res;
     }
 
-    public static class Comparator implements java.util.Comparator<Map.Entry<String, Integer>> {
+    private static class Comparator implements java.util.Comparator<Map.Entry<String, Integer>> {
         @Override
         public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
             if (!o1.getValue().equals(o2.getValue())) {
