@@ -4,9 +4,6 @@ import java.util.Comparator;
 public class KClosestPoints {
    // SQR(x2−x1)2+(y2−y1)2+(z2−z1)/2
     public int[][] kClosest(int[][] points, int K) {
-        // sort the points using custom comparator :
-        // check abs(x-y)
-        // sort based on this
 
         Comparator<int[]> myComp = new Comparator<int[]>() {
             @Override

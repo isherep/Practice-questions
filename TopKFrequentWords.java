@@ -3,7 +3,7 @@ import java.util.*;
 public class TopKFrequentWords {
     public static List<String> topKFrequent(String[] words, int k) {
         List<String> res = new LinkedList<>();
-        if(words == null || words.length <1 || k<0 || k > words.length){
+        if (words == null || words.length < 1 || k < 0 || k > words.length) {
             return res;
         }
         HashMap<String, Integer> map = new HashMap<>();
