@@ -60,6 +60,31 @@ public class Trie {
             val = c;
         }
     }
+    public String longestCommonPrefix(String[] strs) {
+        Trie trie = new Trie();
+        for (String str : strs) {
+            trie.insert(str);
+        }
+        TrieNode current = trie.root;
+        String result = "";
+        while (current.isWord != true) {
+            int count = 0;
+            int index = 0;
+            for (int i = 0; i < 26; i++) {
+                if (current.children[i] != null) {
+                    count += 1;
+                    index = i;
+                }
+            }
+            // if the current has more than one child or no children - it means it was last common one.
+            if (count != 1) return result;  //Once we find a node whose childs number is not 1, say, either 0 or more than 1, common prefix have been found
+            current = current.children[index];
+            result += String.valueOf(current.val);
+        }
+        return result;
+
+    }
 }
+
 
 
