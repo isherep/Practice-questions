@@ -1,9 +1,17 @@
+/**
+ * This is for SUBSEQUENCE NOT SUBSTRING !!!!!
+ *
+ * 2 conditions:
+ *  - start == end
+ *  - middle substring inside is a palidrome too.
+ */
 public class LongestPalidromicSubstring {
     public String longestPalindrome(String s) {
         if (s == null || s.length() < 1) {
             return s;
         }
         int l = s.length();
+        // initialize all palidrome for letter with itself to 1
         int[][] dp = new int[l][l];
         for (int i = 0; i < l; i++) {
             for (int j = 0; j < l; j++) {
@@ -22,14 +30,17 @@ public class LongestPalidromicSubstring {
                 longestLength = 2;
             }
         }
-        for (int subl = 3; subl <= s.length(); subl++) {
-            for (int i = 0; i < l - subl + 1; i++) {
-                int end = i + subl - 1;
+        // keep expanding the k - size of possible palidrome
+        for (int k = 3; k <= s.length(); k++) {
+            for (int i = 0; i < l - k + 1; i++) {
+                int end = i + k - 1;
+                // check if last and first eleent match at ith position
+                // if they - look up if the one inside them before them was a palidrome
                 if (s.charAt(i) == s.charAt(end) && dp[i + 1][end - 1] == 1) {
                     dp[i][end] = 1; // mark it as palidrome
-                    if (subl > longestLength) {
+                    if (k > longestLength) {
                         start = i;
-                        longestLength = subl;
+                        longestLength = k;
                     }
                 }
             }
