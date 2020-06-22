@@ -72,13 +72,12 @@ public class StringRemoveAdjDuplsRecurs {
 
         // else - if the chars are not the same:
         String rem_str = removeUtil(str.substring(1), last_removed);
-        // Check if the first character of the rem_string matches with
-        // the first character of the original string
+
         // Now check if the removed portions start is same as first char
-        if (rem_str.length() != 0 && rem_str.charAt(0) == str.charAt(0))
+        while (rem_str.length() != 0 && rem_str.charAt(0) == str.charAt(0))
         {
             //last_removed = str.charAt(0);
-            return rem_str.substring(1); // Remove first character
+            rem_str =  rem_str.substring(1); // Remove first character
         }
         // If remaining string becomes empty and last removed character
         // is same as first character of original string. This is needed
@@ -104,12 +103,12 @@ public class StringRemoveAdjDuplsRecurs {
         String s = "appppppppple";
         String s1 = "acaaabbbacdddd"; // acac
         String s2 = "caaabbbaacdddd"; // ""
-        RemoveDupls(s2);
-        System.out.println(sb.toString());
-        System.out.println("finished");
+        //RemoveDupls(s2);
+//        System.out.println(sb.toString());
+//        System.out.println("finished");
 
         String str3 = "caaabbbaac";
-        System.out.println(remove(s1));
+        System.out.println(remove(s2));
         System.out.println("finished");
     }
 

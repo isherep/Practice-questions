@@ -1,3 +1,4 @@
+package Trees;
 public class Trie {
 
     TrieNode root;
